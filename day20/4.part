@@ -1,0 +1,19 @@
+		}
+		
+/*
+		int ch = 0;
+		while((ch = mbi.myRead()) != -1)
+		{
+			bufout.write(ch);
+		}
+*/
+
+
+		bufw.close();
+		mbr.close();
+		mln.close();
+		mbi.myClose();
+		bufout.close();
+		
+	}
+}

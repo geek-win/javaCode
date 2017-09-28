@@ -1,0 +1,57 @@
+1、获取
+	长度：str.length();
+	指定位置的字符：str.charAt(int index);
+	查找字符所在角标：str.indexOf(ch); str.indexOf(ch, int fromIndex);
+	查找子字符串所在位置：str.indexOf(str); str.indexOf(str, int fromIndex);
+	反向查找字符：str.lastIndexOf(ch); str.lastIndexOf(ch, int fromIndex);
+	反向查找字符串：str.lastIndexOf(str); str.lastIndexOf(str, int fromIndex);
+2、判断
+	是否有特定内容：str.contains(str);其原理是使用str.indexOf(str/ch)，如果是-1，就说明不包含，false, 如果不是-1，就包含,true。
+	是否为空：str.isEmpty();
+	是否以指定内容开头：str.startsWith();
+	是否以指定内容结尾：str.endsWith();
+	字符串是否相同：str.equals(s1);//不忽略大小写
+	字符串是否相同（忽略大小写）：str.equalsIgnoreCase(s1);//其实是讲str和s1都变成大写或者小写，然后equals
+public boolean equalsIgnoreCase(String s)
+{
+	String s1 = this.toUpperCase();
+	String s2 = s.toUpperCase();
+
+	return s1.equals(s2);
+}
+3、转换
+	字符数组 -> 字符串
+		构造函数
+			String(char[]);
+			String(char[], int offset, int count);
+		静态函数
+			static String copyValueOf(char[]);
+			static String copyValueOf(char[], int offset, int count);
+			static String valueOf(char[]);
+			static String valueOf(char[], int offset, int count);
+	字节数组 -> 字符串
+		同上，把char转成byte
+	字符串 -> 字符数组
+		char[] toCharArray();
+	字符串 -> 字节数组
+		byte[] getBytes();
+	基本数据类型 -> 字符串
+		static String valueOf(int/double);
+4、替换
+	String replace(char oldchar, char newchar);
+	String replace(str oldstr, str newstr);
+5、切割
+	String[] split(regex);
+	str.split(regex);//根据regex对str进行切割，返回字符串数组	
+6、子串
+	String substring(int beginIndex);从beginIndex开始到结尾的子串
+	String substring(int beginIndex, int endIndex);从beginIndex到endIndex-1的子串
+	str.substring(0) <==> str.substring(0, str.length);
+7、去除空格、大小写转换、比较
+	String toUpperCase();
+	String toLowerCase();
+	String trim();
+	int compareTo(String s);
+	s1.compareTo(s2);//比较s1和s2，用s1的第一个和s2不同的字符的ASCII码减去s2的
+	相同为0，s1大返回正数，s1小返回负数。
+	

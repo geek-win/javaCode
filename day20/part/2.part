@@ -1,0 +1,62 @@
+eNumber)
+	{
+		this.lineNumber = lineNumber;
+	}
+	public int getLineNumber()
+	{
+		return this.lineNumber;
+	}
+
+	//读取文本行
+	public String myReadLine()throws IOException
+	{
+		//每次读一行，就会增加1行
+		//也是通过提高读取效率的字符读取流对象的read方法读到缓冲区
+		lineNumber++;
+
+		/*
+		StringBuilder sb = new StringBuilder();
+		int ch = 0;
+	
+		while((ch = r.read()) != -1)
+		{
+			if(ch == '\n')
+			{
+				return sb.toString();
+			}
+			else
+				sb.append((char)ch);
+		}
+
+		if(sb.length() > 0)
+			return sb.toString();
+
+		return null;
+*/
+		return super.myReadLine();
+	}
+}
+
+class MBI
+{
+	//字节输入流对象
+	private InputStream in;
+
+	//缓冲区字节数组
+	private byte[] buf = new byte[1024];
+	//指针和计数器
+	private int pos = 0, count = 0;
+
+	MBI(InputStream in)
+	{
+		this.in = in;
+	}
+	//关闭资源
+	public void myClose()throws IOException
+	{
+		if(in != null)
+			in.close();
+	}
+
+	//读取
+	//调用in的read方法读到缓冲区，然后调用read方法从缓冲区中读�

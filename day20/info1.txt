@@ -1,0 +1,7 @@
+#jjjj
+#Wed Sep 27 00:14:02 CST 2017
+color=红色
+name=zhshuang
+size=max
+health=good
+food=fruit

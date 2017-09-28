@@ -1,0 +1,53 @@
+��数据
+	public int myRead()throws IOException
+	{
+		if(count == 0)
+		{
+			count = in.read(buf);
+			if(count < 0)
+				return -1;
+
+			pos = 0;
+			byte b = buf[pos];
+			pos++;
+			count--;
+
+			return b&255;
+		}
+		else if(count > 0)
+		{
+			byte b = buf[pos];
+			pos++;
+			count--;
+
+			return b&255;
+		}
+
+		return -1;
+	}
+}
+
+class FileDemo
+{
+	public static void main(String[] args)throws IOException
+	{
+		//创建读取流
+		MBR mbr = new MBR(new InputStreamReader(System.in));
+		MLN mln = new MLN(new InputStreamReader(System.in));
+		MBI mbi = new MBI(new FileInputStream("/home/zhshuang/桌面/p1.png"));
+
+		//创建写入流
+		BufferedWriter bufw = new BufferedWriter(new FileWriter("out.txt"));
+		BufferedOutputStream bufout = new BufferedOutputStream(new FileOutputStream("/home/zhshuang/桌面/11.png"));
+
+	
+		String line = null;
+		mln.setLineNumber(10);
+		while((line = mln.myReadLine()) != null)
+		{
+			if("over".equals(line))
+				break;
+
+			bufw.write(mln.getLineNumber()+"---"+line);
+			bufw.newLine();
+			bufw.flush();

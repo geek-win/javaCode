@@ -1,0 +1,62 @@
+/*
+ * 实现BufferedReader和BufferedInputStream类的功能
+ * */
+import java.io.*;
+
+//用来给字符读取流提高读取效率的
+class MBR extends Reader
+{
+	//需要被提高读取效率的字符读取流
+	private Reader r;
+
+	MBR(Reader r)
+	{
+		this.r = r;
+	}
+
+	public void close()throws IOException
+	{
+		if(r != null)
+			r.close();
+	}
+	public int read(char[] cbuf, int off, int length)throws IOException
+	{
+		return r.read(cbuf, off, length);
+	}
+
+	//读取文本行
+	public String myReadLine()throws IOException
+	{
+		char[] buf = new char[1024];
+		int pos = 0;
+		int ch = 0;
+
+		while((ch = r.read()) != -1)
+		{
+			if(ch == '\n')
+			{
+				return new String(buf, 0, pos);
+			}
+			else
+				buf[pos++] = (char)ch;
+		}
+		if(pos > 0)
+			return new String(buf, 0, pos);
+
+		return null;
+	}
+}
+
+class MLN extends MBR
+{
+	//需要被提高读取效率的字符读取流对象父类中有这里不写了
+	//行号
+	private int lineNumber;
+
+	MLN(Reader r)
+	{
+		super(r);	
+	}
+
+	//设置或者行号
+	public void setLineNumber(int lin
